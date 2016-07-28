@@ -8,18 +8,15 @@ namespace Core.Components
 {
     public class FirstName
     {
-        private String _Name;
-
-        public String Name
-        {
-            get { return this._Name; }
-        }
+        public String Name {  get; private set; }
 
         public FirstName(String Name)
         {
+            new IsRequired(Name);
+
             IsAlpha Validation = new IsAlpha(Name);
 
-            this._Name = Validation.Format;
+            this.Name = Validation.Format;
         }
     }
 }

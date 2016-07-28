@@ -45,12 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Copy of FirstName.cs" />
+    <Compile Include="Components\LastName.cs" />
     <Compile Include="Components\FirstName.cs" />
-    <Compile Include="Exceptions\ExceptionAlpha.cs" />
-    <Compile Include="SystemUser.cs" />
+    <Compile Include="Validation\Exceptions\ExceptionRequired.cs" />
+    <Compile Include="Validation\Exceptions\ExceptionAlphaSpaces.cs" />
+    <Compile Include="Validation\Exceptions\ExceptionAlpha.cs" />
+    <Compile Include="SystemUser\SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\IsAlphaSpaces.cs" />
     <Compile Include="Validation\IsAlpha.cs" />
+    <Compile Include="Validation\IsRequired.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Credentials\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

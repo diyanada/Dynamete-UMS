@@ -7,9 +7,9 @@ using Core.Validation.Exceptions;
 
 namespace Core.Validation
 {
-    class IsAlpha
+    class IsAlphaSpaces
     {
-        private Regex _Regex = new Regex(@"^[a-zA-Z]+$");
+        private Regex _Regex = new Regex(@"^[a-zA-Z ]+$");
 
         public Boolean Status { get; private set; }
 
@@ -19,19 +19,20 @@ namespace Core.Validation
         {
             get 
             {
+                this.Input.Trim();
                 this.Input.ToLower();
-                this.Input = Regex.Replace(this.Input, @"(^\w)", m => m.Value.ToUpper());
+                this.Input = Regex.Replace(this.Input, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
                 return this.Input;
             }
         }
 
-        public IsAlpha(String Input)
+        public IsAlphaSpaces(String Input)
         {
             this.Status = (this._Regex.IsMatch(Input) || (Input == String.Empty));
 
             if(this.Status == false)
             {
-                throw new ExceptionAlpha();
+                throw new ExceptionAlphaSpaces();
             }
 
             this.Input = Input;

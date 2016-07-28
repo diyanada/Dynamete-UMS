@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.Validation;
 
 namespace Core.Components
 {
     public class LastName
     {
-        private String _Name;
+        private String _Name = null;
 
         public String Name
         {
@@ -16,7 +17,11 @@ namespace Core.Components
 
         public LastName(String Name)
         {
-            
+            new IsRequired(Name);
+
+            IsAlphaSpaces Validation = new IsAlphaSpaces(Name);
+
+            this._Name = Validation.Format;
         }
     }
 }

@@ -2,40 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Core.Validation.Exceptions;
 
 namespace Core.Validation
 {
-    class IsAlpha
+    class IsRequired
     {
-        private Regex _Regex = new Regex(@"^[a-zA-Z]+$");
-
         public Boolean Status { get; private set; }
 
         private String Input;
 
         public String Format
         {
-            get 
+            get
             {
-                this.Input.ToLower();
-                this.Input = Regex.Replace(this.Input, @"(^\w)", m => m.Value.ToUpper());
+                this.Input.Trim();
                 return this.Input;
             }
         }
 
-        public IsAlpha(String Input)
+        public IsRequired(String Input)
         {
-            this.Status = (this._Regex.IsMatch(Input) || (Input == String.Empty));
+            this.Status = ! String.IsNullOrEmpty(Input);
 
             if(this.Status == false)
             {
-                throw new ExceptionAlpha();
+                throw new ExceptionRequired();
             }
 
             this.Input = Input;
         }
-
     }
 }

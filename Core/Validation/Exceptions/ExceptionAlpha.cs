@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core.Exceptions
+namespace Core.Validation.Exceptions
 {
     class ExceptionAlpha : Exception
     {
