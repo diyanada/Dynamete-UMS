@@ -6,13 +6,13 @@ using Core.Validation;
 
 namespace Core.Components
 {
-    public class Lastname : Components
+    public class Counter : Components
     {
-        public Lastname(String Input) : base()
+        public Counter(int Input) : base()
         {
-            new IsRequired(Input);
+            new IsRequired(Input.ToString());
 
-            IsAlphaSpaces Validation = new IsAlphaSpaces(Input);
+            IsNumeric Validation = new IsNumeric(Input.ToString());
 
             this.Contains = Validation.Output;
         }

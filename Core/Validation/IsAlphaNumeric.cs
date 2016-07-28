@@ -7,22 +7,22 @@ using Core.Validation.Exceptions;
 
 namespace Core.Validation
 {
-    class IsAlphaSpaces : Validation
+    class IsAlphaNumeric : Validation
     {
         public override String Output
         {
             get 
             {
                 this.Input.ToLower();
-                this.Input = Regex.Replace(this.Input, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+                this.Input = Regex.Replace(this.Input, @"(^\w)", m => m.Value.ToUpper());
                 return base.OutputTrim;
             }
         }
 
-        public IsAlphaSpaces(String Input) : base()
+        public IsAlphaNumeric(String Input) : base()
         {
-            Regex Regular = new Regex(@"^[a-zA-Z ]+$");
-            ValidationException Error = this.Builder.Build(Errors.Alpha);
+            Regex Regular = new Regex(@"^[a-zA-Z][a-zA-Z0-9]*$");
+            ValidationException Error = this.Builder.Build(Errors.AlphaNumeric);
 
             base.Validate(Input, Regular, Error);
         }

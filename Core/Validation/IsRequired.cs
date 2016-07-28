@@ -6,31 +6,13 @@ using Core.Validation.Exceptions;
 
 namespace Core.Validation
 {
-    class IsRequired
+    class IsRequired : Validation
     {
-        public Boolean Status { get; private set; }
-
-        private String Input;
-
-        public String Format
-        {
-            get
-            {
-                this.Input.Trim();
-                return this.Input;
-            }
-        }
-
         public IsRequired(String Input)
         {
-            this.Status = ! String.IsNullOrEmpty(Input);
+            ValidationException Error = this.Builder.Build(Errors.Required);
 
-            if(this.Status == false)
-            {
-                throw new ExceptionRequired();
-            }
-
-            this.Input = Input;
+            base.Validate(Input, Error);
         }
     }
 }

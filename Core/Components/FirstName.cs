@@ -6,17 +6,15 @@ using Core.Validation;
 
 namespace Core.Components
 {
-    public class FirstName
+    public class Firstname : Components
     {
-        public String Name {  get; private set; }
-
-        public FirstName(String Name)
+        public Firstname(String Input) : base()
         {
-            new IsRequired(Name);
+            new IsRequired(Input);
 
-            IsAlpha Validation = new IsAlpha(Name);
+            IsAlpha Validation = new IsAlpha(Input);
 
-            this.Name = Validation.Format;
+            this.Contains = Validation.Output;
         }
     }
 }

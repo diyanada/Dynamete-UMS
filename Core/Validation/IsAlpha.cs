@@ -7,34 +7,24 @@ using Core.Validation.Exceptions;
 
 namespace Core.Validation
 {
-    class IsAlpha
+    class IsAlpha : Validation
     {
-        private Regex _Regex = new Regex(@"^[a-zA-Z]+$");
-
-        public Boolean Status { get; private set; }
-
-        private String Input;
-
-        public String Format
+        public override String Output
         {
             get 
             {
                 this.Input.ToLower();
                 this.Input = Regex.Replace(this.Input, @"(^\w)", m => m.Value.ToUpper());
-                return this.Input;
+                return base.OutputTrim;
             }
         }
 
-        public IsAlpha(String Input)
+        public IsAlpha(String Input) : base()
         {
-            this.Status = (this._Regex.IsMatch(Input) || (Input == String.Empty));
+            Regex Regular = new Regex(@"^[a-zA-Z]+$");
+            ValidationException Error = this.Builder.Build(Errors.Alpha);
 
-            if(this.Status == false)
-            {
-                throw new ExceptionAlpha();
-            }
-
-            this.Input = Input;
+            base.Validate(Input, Regular, Error);
         }
 
     }

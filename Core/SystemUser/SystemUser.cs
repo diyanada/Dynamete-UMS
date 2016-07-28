@@ -8,29 +8,29 @@ namespace Core
 {
     public class SystemUser
     {
-        private FirstName _FirstName;
-        public String FirstName
+        private Firstname _Firstname;
+        public String Firstname
         {
             get
             {
-                return this._FirstName.Name;
+                return this._Firstname.Contains;
             }
             set 
             {
-                this._FirstName = new FirstName(value);
+                this._Firstname = new Firstname(value);
             }
         }
 
-        private LastName _LastName;
-        public String LastName
+        private Lastname _Lastname;
+        public String Lastname
         {
             get
             {
-                return this._LastName.Name;
+                return this._Lastname.Contains;
             }
             set
             {
-                this._LastName = new LastName(value);
+                this._Lastname = new Lastname(value);
             }
         }
     }
